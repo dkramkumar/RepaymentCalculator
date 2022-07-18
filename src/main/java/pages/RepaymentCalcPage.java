@@ -16,19 +16,34 @@ public class RepaymentCalcPage extends BasePage{
 	public static final By byCalculateButton = findBy("submit");
 	public static final By byInputInterestRate = findBy("(//a[@id='useProductList'])[1]");
 	public static final By byBanner = findBy("//div//span//a[contains(text(), 'Dismiss')]");
-	
+
 	public static void clickOnHomeLoansTab(String data) throws InterruptedException {
+		/*if(findObject(byBanner, "Banner").isDisplayed()) {
+			driver.findElement(By.xpath("//span//a[contains(text(), 'Dismiss')]")).click();
+		}else{
+			System.out.println("INFO: Banner is not displayed");
+		}*/
 		By byHomeLoans = findBy("(//li//a[contains(text(), '"+data+"')])[1]");
 		clickElement(byHomeLoans, "Home Loans");
 		Thread.sleep(2000);
 	}
 
 	public static void clickOnCalculatorsAndTools(String data) throws InterruptedException {
+		/*if(findObject(byBanner, "Banner").isDisplayed()) {
+		driver.findElement(By.xpath("//span//a[contains(text(), 'Dismiss')]")).click();
+		}else{
+			System.out.println("INFO: Banner is not displayed");
+		}*/
 		By byCalculatorsAndTools = findBy("(//li//a[@data-tracker-id='default_0_4'])[1]");
 		clickElement(byCalculatorsAndTools, "Calculators And Tools");
 	}
 
 	public static void clickOnCalculateNow(String data) {
+		/*if(findObject(byBanner, "Banner").isDisplayed()) {
+		driver.findElement(By.xpath("//span//a[contains(text(), 'Dismiss')]")).click();
+		}else{
+			System.out.println("INFO: Banner is not displayed");
+		}*/
 		By byCalculateNow = findBy("(//p//a[@aria-label='"+data+"'])[2]");
 		clickElement(byCalculateNow, "Calculate Now");
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -66,13 +81,13 @@ public class RepaymentCalcPage extends BasePage{
 			System.out.println("ERROR: Element is not selected");
 		}	
 	}
-	
+
 	public static void selectWithaStandard1(String data) {
 		By byEle = findBy("//select[@id='productId']");
 		selectFromDropDownByValue(byEle, "With a ", data);
-		
+
 	}
-	
+
 	public static void clickOnCalculateButton() {
 		clickElement(byCalculateButton, "Calculate  Button");
 	}
@@ -84,19 +99,19 @@ public class RepaymentCalcPage extends BasePage{
 	public static String getTotalInterestCharged() {
 		return getText(byTotalInterestCharged, "Total Interest Charged");
 	}
-	
+
 	public static void clickOnInputInterestRate() {
 		clickElement(byInputInterestRate, "Input Interest Rate");
 	}
-	
+
 	public static void clearInputInterestRate() {
 		driver.findElement(By.xpath("//input[@id='customRate']")).clear();
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
-	
+
 	public static void setInputInterestRate(String text) {
 		driver.findElement(By.xpath("//input[@id='customRate']")).sendKeys(text);
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		System.out.println("INFO: Entered input interest rate is : " +text);
 	}
 }

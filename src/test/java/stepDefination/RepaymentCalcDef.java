@@ -106,4 +106,12 @@ public class RepaymentCalcDef extends BasePage{
 		String totInterestCharged = RepaymentCalcPage.getTotalInterestCharged();
 		Assert.assertTrue(totInterestCharged.equals(string2));
 	}
+	
+	@Then("User validate total loan repayment and total interest charged")
+	public void user_validate_total_loan_repayment_and_total_interest_charged() {
+
+	}
+
+
+
 }
